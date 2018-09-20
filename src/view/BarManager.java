@@ -1,6 +1,5 @@
 package view;
 
-import database.ConnectorFactory;
 import java.sql.Connection;
 import java.util.Calendar;
 

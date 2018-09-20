@@ -11,7 +11,6 @@ public class OperationHours {
     
     private Date openingTime[];
     private Date closingTime[];
-    private boolean openToday[];
     
     private static final DateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
     
@@ -27,8 +26,7 @@ public class OperationHours {
         Date close = calclose.getTime();
         
         openingTime = new Date[]{open, open, open, open, open, open, open};
-        closingTime = new Date[]{close, close, close, close, close, close, close};
-        openToday = new boolean[]{true, true, true, true, true, true, true};
+        closingTime = new Date[]{close, close, null, close, close, close, close};
        
     }
     
@@ -39,7 +37,8 @@ public class OperationHours {
     }
     
     public boolean isOpenToday(){
-        return openToday[getIndexWeek()-1];
+        return closingTime[getIndexWeek()-1] != null &&
+               openingTime[getIndexWeek()-1] != null;
     }
     
     public boolean isOpenNow(){
